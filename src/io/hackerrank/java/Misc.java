@@ -10,22 +10,22 @@ import java.util.stream.Collectors;
 public class Misc {
 
 
-
     public static void main(String[] args) {
 
-        System.out.println(leastNumber(1,2,5,0));
+        System.out.println(leastNumber(2, 5, 2));
     }
 
-    public static int leastNumber(int... numbers){
-        int leastNumber = numbers[0];
+    public static int leastNumber(int a, int b, int c) {
+        int leastNumber;
 
-        for(int i = 1; i < numbers.length; i++){
-            if(numbers[i] < leastNumber){
-                leastNumber = numbers[i];
-            }
+        if (a < b && a < c) {
+            return a;
+        } else if (b < a && b < c) {
+            return b;
+        } else {
+            return c;
         }
 
-        return leastNumber;
     }
 
 
