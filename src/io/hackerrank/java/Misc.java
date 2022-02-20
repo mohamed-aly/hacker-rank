@@ -12,7 +12,28 @@ public class Misc {
 
     public static void main(String[] args) {
 
-        stonesSequence();
+        areAnagrams("ahmed", "demhc");
+    }
+
+    public static void areAnagrams(String a, String b) {
+        boolean areAnagrams = false;
+
+        if(a.length() == b.length()){
+            areAnagrams = true;
+
+            a = a.toUpperCase();
+            b = b.toUpperCase();
+
+            for (int i = 0; i < a.length(); i++) {
+                if (a.charAt(i) != b.charAt(b.length() - i - 1)) {
+                    areAnagrams = false;
+                    break;
+                }
+            }
+        }
+
+        System.out.println(areAnagrams ? "Anagrams" : "Not Anagrams");
+
     }
 
     public static void stonesSequence() {
@@ -21,8 +42,8 @@ public class Misc {
         String instructions = scanner.nextLine();
 
         int lisPosition = 1;
-        for(char instruction : instructions.toCharArray()){
-            if(instruction == stones.charAt(lisPosition-1)){
+        for (char instruction : instructions.toCharArray()) {
+            if (instruction == stones.charAt(lisPosition - 1)) {
                 lisPosition++;
             }
         }
