@@ -12,7 +12,22 @@ public class Misc {
 
     public static void main(String[] args) {
 
-        System.out.println(leastNumber(2, 5, 2));
+        stonesSequence();
+    }
+
+    public static void stonesSequence() {
+        Scanner scanner = new Scanner(System.in);
+        String stones = scanner.nextLine();
+        String instructions = scanner.nextLine();
+
+        int lisPosition = 1;
+        for(char instruction : instructions.toCharArray()){
+            if(instruction == stones.charAt(lisPosition-1)){
+                lisPosition++;
+            }
+        }
+
+        System.out.println(lisPosition);
     }
 
     public static int leastNumber(int a, int b, int c) {
