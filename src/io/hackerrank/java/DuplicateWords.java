@@ -9,24 +9,13 @@ public class DuplicateWords {
     public static void main(String[] args) {
 
         String regex = "\\b(\\w+)(\\s+\\1)+\\b";
-        Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
 
         Scanner scanner = new Scanner(System.in);
         int numberOfSentences = Integer.parseInt(scanner.nextLine());
-        ArrayList<String> list = new ArrayList<>();
+
 
         while (numberOfSentences-- > 0){
-            list.add(scanner.nextLine());
-        }
-
-        for(String word : list){
-            Matcher matcher = pattern.matcher(word);
-
-            while (matcher.find()){
-                word = word.replaceAll(matcher.group(0), matcher.group(1));
-            }
-
-            System.out.println(word);
+            System.out.println(scanner.nextLine().replaceAll(regex, "$1"));
         }
     }
 }
