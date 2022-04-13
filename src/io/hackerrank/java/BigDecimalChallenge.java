@@ -15,14 +15,8 @@ public class BigDecimalChallenge {
 
         sc.close();
 
-        Comparator<String> c = Comparator.comparing(
-                p -> {
-                    if(p != null){
-                        return new BigDecimal(p);
-                    }else {
-                        return BigDecimal.ZERO;
-                    }
-                }, Comparator.reverseOrder());
+        Comparator<String> c = Comparator
+                .nullsLast(Comparator.comparing(BigDecimal::new, Comparator.reverseOrder()));
 
         Arrays.sort(s, c);
 
