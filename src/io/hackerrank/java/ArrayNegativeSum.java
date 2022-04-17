@@ -14,7 +14,7 @@ public class ArrayNegativeSum {
         int count = 0;
         for (int j = 0; j < n; j++) {
             int sum = 0;
-            for (int k = j; j < n; j++) {
+            for (int k = j; k < n; k++) {
                 sum += array[k];
                 if (sum < 0) {
                     count++;
