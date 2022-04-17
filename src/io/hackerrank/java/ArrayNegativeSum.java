@@ -1,19 +1,26 @@
 package io.hackerrank.java;
 
+import java.util.Scanner;
+
 public class ArrayNegativeSum {
     public static void main(String[] args) {
-        int[] array = {1, -2, 4, -5, 1};
-        int counter = 0;
-        for (int subarrayLength = 1; subarrayLength < array.length; subarrayLength++) {
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        int[] array = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            array[i] = s.nextInt();
+        }
+        int count = 0;
+        for (int j = 0; j < n; j++) {
             int sum = 0;
-            for (int i = 0; i < array.length - subarrayLength; i++) {
-                sum += array[i];
+            for (int k = j; j < n; j++) {
+                sum += array[k];
                 if (sum < 0) {
-                    counter++;
+                    count++;
                 }
             }
         }
-
-        System.out.println(counter);
+        System.out.println(count);
     }
 }
