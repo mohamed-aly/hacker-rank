@@ -1,29 +1,25 @@
 package loops;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Question14 {
     public static void main(String[] args) {
-        Scanner console = new Scanner(System.in);
+        int max, current = 0, next = 1;
 
-        int number;  // To hold number of terms
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("How many elements you want to display?");
+        max = scanner.nextInt();
+        System.out.println("Printing Fibonacci Series till " + max + " elements");
 
-        int firstTerm = 0,
-                secondTerm = 1,
-                thirdTerm;
+        for(int i = 0; i < max; i++){
+            System.out.print(current + " ");
 
-        System.out.print("Enter number of terms of series : ");
-        number = console.nextInt();
-
-        System.out.print(firstTerm + " " + secondTerm + " ");
-
-        for(int i = 3; i <= number; i++)
-        {
-            thirdTerm = firstTerm + secondTerm;
-            System.out.print(thirdTerm + " ");
-            firstTerm = secondTerm;
-            secondTerm = thirdTerm;
+          int sum = current + next;
+          current = next;
+          next = sum;
         }
     }
 }
