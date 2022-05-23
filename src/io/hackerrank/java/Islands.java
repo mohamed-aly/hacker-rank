@@ -2,75 +2,57 @@ package io.hackerrank.java;
 
 // Java program to count islands in boolean 2D matrix
 
-import java.util.*;
-import java.lang.*;
-import java.io.*;
-
 class Islands {
 
-    private int[][] array;
-    private boolean visited[][];
+    private int[][] matrix;
     private int rows;
     private int cols;
 
-    // These arrays are used to get row and column numbers
-    // of 8 neighbors of a given cell
-    static final int[] rowNbr = new int[]{-1, -1, -1, 0, 0, 1, 1, 1};
-    static final int[] colNbr = new int[]{-1, 0, 1, -1, 1, -1, 0, 1};
+    private boolean[][] visited;
 
-    public Islands(int[][] array) {
-        this.array = array;
-        this.rows = array.length;
-        this.cols = array[0].length;
+    private static final int[] rowsNbr = {-1, -1, -1, 0, 0, 1, 1, 1};
+    private static final int[] colsNbr = {-1, 0, 1, -1, 1, -1, 0, 1};
 
-        // Make a bool array to mark visited cells.
-        // Initially all cells are unvisited
+    public Islands(int[][] matrix) {
+        this.matrix = matrix;
+        this.rows = matrix.length;
+        this.cols = matrix[0].length;
+
         this.visited = new boolean[rows][cols];
     }
 
-    // A function to check if a given cell (row, col) can
-    // be included in DFS
-    boolean isSafe(int row, int col) {
-        // row number is in range, column number is in range
-        // and value is 1 and not yet visited
-        return (row >= 0) && (row < rows) && (col >= 0) && (col < cols) && (array[row][col] == 1 && !visited[row][col]);
+    private boolean isSafe(int row, int col) {
+        return row >= 0 && row < rows && col >= 0 && col < cols
+                && matrix[row][col] == 1 && !visited[row][col];
     }
 
-    // A utility function to do DFS for a 2D boolean matrix.
-    // It only considers the 8 neighbors as adjacent vertices
-    void DFS(int row, int col) {
+    private void DFS(int row, int col) {
+        this.visited[row][col] = true;
 
-        // Mark this cell as visited
-        visited[row][col] = true;
+        for (int k = 0; k < 8; k++) {
+            if (isSafe(row + rowsNbr[k], col + colsNbr[k])) {
+                DFS(row + rowsNbr[k], col + colsNbr[k]);
+            }
+        }
 
-        // Recur for all connected neighbours
-        for (int k = 0; k < 8; ++k)
-            if (isSafe(row + rowNbr[k], col + colNbr[k]))
-                DFS(row + rowNbr[k], col + colNbr[k]);
     }
 
-    // The main function that returns count of islands in a given
-    // boolean 2D matrix
-    int countIslands() {
-
-        // Initialize count as 0 and traverse through the all cells
-        // of given matrix
-        int count = 0;
-        for (int i = 0; i < rows; ++i)
-            for (int j = 0; j < cols; ++j)
-                if (array[i][j] == 1 && !visited[i][j]) // If a cell with
-                { // value 1 is not
-                    // visited yet, then new island found, Visit all
-                    // cells in this island and increment island count
+    public int countIslands() {
+        int counter = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (matrix[i][j] == 1 && !visited[i][j]) {
                     DFS(i, j);
-                    ++count;
+                    counter++;
                 }
+            }
+        }
 
-        return count;
+        return counter;
     }
 
     // Driver method
-    public static void main(String[] args) throws java.lang.Exception {
+    public static void main(String[] args) {
         int M[][] = new int[][]{{1, 1, 0, 0, 0},
                 {0, 1, 0, 0, 1},
                 {1, 0, 0, 1, 1},

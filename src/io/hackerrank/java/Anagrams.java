@@ -1,7 +1,5 @@
 package io.hackerrank.java;
 
-import java.util.Arrays;
-
 public class Anagrams {
     public static void main(String[] args) {
         System.out.println(isAnagram("madas", "sadam"));

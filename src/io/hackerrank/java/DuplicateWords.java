@@ -1,9 +1,6 @@
 package io.hackerrank.java;
 
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class DuplicateWords {
     public static void main(String[] args) {

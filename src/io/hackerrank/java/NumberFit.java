@@ -1,6 +1,5 @@
 package io.hackerrank.java;
 
-import java.time.LocalTime;
 import java.util.Scanner;
 
 public class NumberFit {

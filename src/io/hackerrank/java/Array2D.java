@@ -1,7 +1,5 @@
 package io.hackerrank.java;
 
-import java.util.Arrays;
-
 public class Array2D {
     public static void main(String[] args) {
         int[] array1 = {1, 2, 3, 4};

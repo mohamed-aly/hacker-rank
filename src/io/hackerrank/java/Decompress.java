@@ -1,7 +1,5 @@
 package io.hackerrank.java;
 
-import java.util.Arrays;
-
 public class Decompress {
     public static void main(String[] args) {
         System.out.println(decompress("d4f5c14"));

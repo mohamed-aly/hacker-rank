@@ -1,7 +1,5 @@
 package io.hackerrank.java;
 
-import sun.security.provider.MD5;
-
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
