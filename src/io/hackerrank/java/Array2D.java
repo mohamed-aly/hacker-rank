@@ -14,15 +14,15 @@ public class Array2D {
         System.out.println(largestHourGlass(twoDArray));
     }
 
-    private static int largestHourGlass(int[][] twoDArray){
-        Integer largest = null;
-        for(int i = 0; i <twoDArray.length-2; i++){
-            for(int j = 0; j < twoDArray[i].length-2; j++){
-                int sum = twoDArray[i][j] + twoDArray[i][j+1] + twoDArray[i][j+2]
-                        + twoDArray[i+1][j+1]
-                        + twoDArray[i+2][j] + twoDArray[i+2][j+1] + twoDArray[i+2][j+2];
+    private static int largestHourGlass(int[][] twoDArray) {
+        int largest = Integer.MIN_VALUE;
+        for (int i = 0; i < twoDArray.length - 2; i++) {
+            for (int j = 0; j < twoDArray[i].length - 2; j++) {
+                int sum = twoDArray[i][j] + twoDArray[i][j + 1] + twoDArray[i][j + 2]
+                        + twoDArray[i + 1][j + 1]
+                        + twoDArray[i + 2][j] + twoDArray[i + 2][j + 1] + twoDArray[i + 2][j + 2];
 
-                if(largest == null || sum>largest){
+                if(sum > largest){
                     largest = sum;
                 }
             }

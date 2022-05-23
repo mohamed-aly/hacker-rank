@@ -14,14 +14,12 @@ public class Anagrams {
                 || a.length() + b.length() >= 100
                 || !(a + b).matches("^[a-zA-Z]+$")) return false;
 
-        char[] firstArray = a.toLowerCase().toCharArray();
-        char[] secondArray = b.toLowerCase().toCharArray();
+        //case sensitive
+        a = a.toUpperCase();
+        b = b.toUpperCase();
 
-        Arrays.sort(firstArray);
-        Arrays.sort(secondArray);
-
-        for (int i = 0; i < firstArray.length; i++) {
-            if (firstArray[i] != secondArray[i]) {
+        for (int i = 0; i < a.length(); i++) {
+            if (a.charAt(i) != b.charAt(b.length() - 1 - i)) {
                 return false;
             }
         }
