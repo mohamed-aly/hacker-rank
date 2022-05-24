@@ -8,12 +8,12 @@ public class Compress {
     private static String compress(String source) {
         StringBuilder builder = new StringBuilder();
 
-        for(int i = 0; i<source.length(); i++){
+        for (int i = 0; i < source.length(); i++) {
             int count = 1;
 
-            while(i + 1 < source.length() && source.charAt(i) == source.charAt(i+1)){
-                count++;
+            while (i + 1 < source.length() && source.charAt(i) == source.charAt(i + 1)) {
                 i++;
+                count++;
             }
 
             builder.append(source.charAt(i));
