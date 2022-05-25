@@ -1,11 +1,14 @@
-package algorithms;
+package leetcode;
 
 public class Print {
     public static void main(String[] args) {
 //        printStars(6, '#');
-        printDiagonal(5);
+//        printDiagonal(5);
 //        printSpacesDiagonal(5);
 //    printStairsDown(6, '1');
+        printStairsUp(4, '#');
+        String x = "ahmahmahm";
+        System.out.println(x.substring(0, x.indexOf(x.charAt(0), 1)));
     }
 
     private static void printStars(int count, char symbol) {
