@@ -2,31 +2,35 @@ package leetcode;
 
 public class PalindromicSubstring {
     public static void main(String[] args) {
-        System.out.println(getPalindromesCount("aaa"));
+        System.out.println(getPalindromesCount("abc"));
     }
-    public static int getPalindromesCount(String s){
-        int length = s.length();
-        int count = 0;
 
-        for(int i = 0; i < length; i++){
-            for(int j = i; j < length; j++){
-                if(check(s, i, j)){
-                    count++;
-                }
+    private static int getPalindromesCount(String s) {
+        int count = s.length();
+        for(int i =0; i < s.length(); i++){
+            count += getPalindromesCount(s, i);
+        }
+        return count;
+    }
+
+    private static int getPalindromesCount(String s, int center) {
+        int count = 0;
+        count += getPalindromesCount(s, center, center + 1);
+        count += getPalindromesCount(s, center-1, center +1);
+        return count;
+    }
+
+    private static int getPalindromesCount(String s, int start, int end) {
+        int count = 0;
+        while (start>= 0 && end < s.length()){
+            if(s.charAt(start--) != s.charAt(end++)){
+                break;
             }
+            count++;
         }
 
         return count;
     }
 
-    private static boolean check(String s, int i, int j){
-        while (i <= j){
-            if(s.charAt(i) != s.charAt(j)){
-                return false;
-            }
-            i++;
-            j--;
-        }
-        return true;
-    }
+
 }
