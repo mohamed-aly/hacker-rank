@@ -15,19 +15,18 @@ public class LargestSubStringWithNoRepeatition {
         int startIndex = 0;
         int endIndex = 0;
 
-        for(int start = 0, end = 0; end <input.length(); end++){
-            char currentChar = input.charAt(end);
-
-            if(visited.containsKey(currentChar)){
-                start = visited.get(currentChar) + 1;
+        for(int start = 0, end = 0; end<input.length(); end++){
+            char character = input.charAt(end);
+            if(visited.containsKey(character)){
+                start = visited.get(character) + 1;
             }
 
-            if(endIndex - startIndex < end - start){
+            if(end - start > endIndex - startIndex){
                 startIndex = start;
                 endIndex = end;
             }
 
-            visited.put(currentChar, end);
+            visited.put(character, end);
         }
 
         return input.substring(startIndex, endIndex + 1);
