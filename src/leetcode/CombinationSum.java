@@ -19,14 +19,22 @@ public class CombinationSum {
 
     private static void backtrack(List<List<Integer>> result, List<Integer> tempList, int[] nums, int remain, int start) {
         if (remain < 0) {
+            System.out.println(remain + " remain is less than 0");
             return;
         } else if (remain == 0) {
+            System.out.println(remain + " is zero so this is an acceptable combination");
+            System.out.println(tempList);
             result.add(new ArrayList<>(tempList));
         } else {
             for (int i = start; i < nums.length; i++) {
+                System.out.println(String.format("We are at index %s which is %s add to the temp list", i, nums[i]));
                 tempList.add(nums[i]);
-                backtrack(result, tempList, nums, remain - nums[i], i);
+                System.out.println(tempList);
+                int newRemain = remain-nums[i];
+                System.out.println("the new remain is " + newRemain);
+                backtrack(result, tempList, nums, newRemain, i);
                 tempList.remove(tempList.size() - 1);
+                System.out.println("item is removed, list is " + tempList);
             }
         }
     }
