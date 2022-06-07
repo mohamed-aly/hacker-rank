@@ -3,15 +3,20 @@ package leetcode;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        long l = 1650868433449L;
-        Timestamp ts = new Timestamp(l);
-        System.out.println(ts.toLocalDateTime());
+        LocalDateTime time = LocalDateTime.parse("2022-06-06T09:06:00.000Z", DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")).plusHours(4);
+
+        System.out.println(3%7);
+
     }
 
     public static String timeConversion(String s) {
